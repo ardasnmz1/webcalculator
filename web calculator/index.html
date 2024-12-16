@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Gelişmiş Web Hesap Makinesi</title>
+    <!-- Google Fonts ile Roboto yazı tipini ekliyoruz -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <!-- Stil dosyamızı ekliyoruz -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Dil Seçimi -->
+    <div class="language-selector">
+        <button id="lang-tr">TR</button>
+        <button id="lang-en">EN</button>
+    </div>
+
+    <div class="calculator">
+        <!-- Ekran -->
+        <div id="display">0</div>
+        <!-- Butonlar -->
+        <div class="buttons">
+            <!-- İlk satır -->
+            <button class="operator" data-operation="clear" aria-label="Temizle">C</button>
+            <button class="operator" data-operation="delete" aria-label="Sil">⌫</button>
+            <button class="operator" data-operation="%" aria-label="Yüzde">%</button>
+            <button class="operator" data-operation="/" aria-label="Böl">÷</button>
+            <!-- İkinci satır -->
+            <button data-number="7">7</button>
+            <button data-number="8">8</button>
+            <button data-number="9">9</button>
+            <button class="operator" data-operation="*" aria-label="Çarp">×</button>
+            <!-- Üçüncü satır -->
+            <button data-number="4">4</button>
+            <button data-number="5">5</button>
+            <button data-number="6">6</button>
+            <button class="operator" data-operation="-" aria-label="Çıkar">−</button>
+            <!-- Dördüncü satır -->
+            <button data-number="1">1</button>
+            <button data-number="2">2</button>
+            <button data-number="3">3</button>
+            <button class="operator" data-operation="+" aria-label="Topla">+</button>
+            <!-- Beşinci satır -->
+            <button data-number="0" style="grid-column: span 2;">0</button>
+            <button data-number=".">.</button>
+            <button class="equals" data-operation="=" style="grid-row: span 2;" aria-label="Eşittir">=</button>
+        </div>
+    </div>
+
+    <!-- Tema değiştirme butonları -->
+    <div class="theme-buttons">
+        <button id="light-theme">Aydınlık Tema</button>
+        <button id="dark-theme">Karanlık Tema</button>
+        <button id="colorful-theme">Renkli Tema</button>
+    </div>
+
+    <!-- Bilimsel işlemler için butonlar -->
+    <div class="scientific-buttons">
+        <button class="operator" data-operation="sqrt">√</button>
+        <button class="operator" data-operation="square">x²</button>
+        <button class="operator" data-operation="power">xʸ</button>
+        <button class="operator" data-operation="factorial">n!</button>
+        <button class="operator" data-operation="exp">eˣ</button>
+        <button class="operator" data-operation="ln">ln</button>
+        <button class="operator" data-operation="log">log</button>
+        <button class="operator" data-operation="sin">sin</button>
+        <button class="operator" data-operation="cos">cos</button>
+        <button class="operator" data-operation="tan">tan</button>
+    </div>
+
+    <!-- Geçmiş (History) bölümü ve temizleme butonu -->
+    <div id="history"></div>
+    <button id="clear-history">Geçmişi Temizle</button>
+
+    <!-- JavaScript dosyamızı ekliyoruz -->
+    <script src="app.js"></script>
+</body>
+</html>
