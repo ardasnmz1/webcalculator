@@ -1,17 +1,16 @@
-// Ekran, geçmiş ve butonları seçiyoruz
+
 const display = document.getElementById('display');
 const historyDiv = document.getElementById('history');
 const clearHistoryBtn = document.getElementById('clear-history');
 
-// Değişkenler
+
 let currentOperand = '';
 let previousOperand = '';
 let operation = undefined;
 
-// Geçmişi localStorage'dan yüklüyoruz
 let history = JSON.parse(localStorage.getItem('history')) || [];
 
-// Butonlar için olay dinleyicisi (Event Delegation)
+
 const buttonsContainer = document.querySelector('.buttons');
 buttonsContainer.addEventListener('click', (event) => {
     const target = event.target;
@@ -26,7 +25,7 @@ buttonsContainer.addEventListener('click', (event) => {
     }
 });
 
-// Bilimsel butonlar için olay dinleyicisi
+
 const scientificButtonsContainer = document.querySelector('.scientific-buttons');
 scientificButtonsContainer.addEventListener('click', (event) => {
     const target = event.target;
@@ -36,7 +35,7 @@ scientificButtonsContainer.addEventListener('click', (event) => {
     }
 });
 
-// Klavye olaylarını dinleme
+
 document.addEventListener('keydown', (event) => {
     const key = event.key;
 
@@ -66,13 +65,12 @@ document.addEventListener('keydown', (event) => {
     }
 });
 
-// Sayı ekleme fonksiyonu
 function appendNumber(number) {
     if (number === '.' && currentOperand.includes('.')) return;
     currentOperand = currentOperand.toString() + number.toString();
 }
 
-// İşlem seçme fonksiyonu
+
 function chooseOperation(op) {
     if (op === 'clear') {
         clear();
@@ -102,7 +100,7 @@ function chooseOperation(op) {
     currentOperand = '';
 }
 
-// Hesaplama fonksiyonu
+
 function compute() {
     let computation;
     const prev = parseFloat(previousOperand);
@@ -169,7 +167,7 @@ function compute() {
             return;
     }
 
-    // Hataları kontrol edelim
+
     if (isNaN(computation) || !isFinite(computation)) {
         alert('Hata: Geçersiz matematiksel işlem!');
         clear();
@@ -182,7 +180,7 @@ function compute() {
     appendHistory(`${prev !== undefined ? prev : ''} ${operationSymbol(operation)} ${current !== undefined ? current : ''} = ${computation}`);
 }
 
-// İşlem sembolünü döndüren fonksiyon
+
 function operationSymbol(op) {
     const symbols = {
         '+': '+',
@@ -204,7 +202,6 @@ function operationSymbol(op) {
     return symbols[op] || '';
 }
 
-// Faktöriyel fonksiyonu
 function factorial(n) {
     n = parseInt(n);
     if (n < 0) return 'Tanımsız';
@@ -216,12 +213,10 @@ function factorial(n) {
     return result;
 }
 
-// Ekranı güncelleme fonksiyonu
 function updateDisplay() {
     display.innerText = currentOperand || previousOperand || '0';
 }
 
-// Temizleme fonksiyonu
 function clear() {
     currentOperand = '';
     previousOperand = '';
@@ -229,12 +224,12 @@ function clear() {
     display.innerText = '0';
 }
 
-// Silme fonksiyonu
+
 function deleteNumber() {
     currentOperand = currentOperand.toString().slice(0, -1);
 }
 
-// Tarihçe ekleme ve gösterme fonksiyonları
+
 function appendHistory(expression) {
     history.unshift(expression);
     if (history.length > 10) {
@@ -253,14 +248,14 @@ function renderHistory() {
     });
 }
 
-// Geçmişi temizleme
+
 clearHistoryBtn.addEventListener('click', () => {
     history = [];
     localStorage.removeItem('history');
     renderHistory();
 });
 
-// Tema değiştirme
+
 const lightThemeBtn = document.getElementById('light-theme');
 const darkThemeBtn = document.getElementById('dark-theme');
 const colorfulThemeBtn = document.getElementById('colorful-theme');
@@ -280,19 +275,19 @@ colorfulThemeBtn.addEventListener('click', () => {
     document.body.classList.add('colorful-theme');
 });
 
-// Sayfa yüklendiğinde
+
 document.addEventListener('DOMContentLoaded', () => {
     updateDisplay();
     renderHistory();
 });
-// ... Önceki değişkenler ve fonksiyonlar ...
 
-// Dil Seçimi
+
+
 const langTrBtn = document.getElementById('lang-tr');
 const langEnBtn = document.getElementById('lang-en');
 let currentLanguage = 'tr';
 
-// Metinleri içeren bir nesne
+
 const translations = {
     tr: {
         clear: 'C',
@@ -324,11 +319,11 @@ const translations = {
     }
 };
 
-// Dil değiştirme fonksiyonu
+
 function changeLanguage(lang) {
     currentLanguage = lang;
 
-    // Dil seçici butonlarının aktiflik durumunu güncelle
+ 
     if (lang === 'tr') {
         langTrBtn.classList.add('active');
         langEnBtn.classList.remove('active');
@@ -337,7 +332,6 @@ function changeLanguage(lang) {
         langTrBtn.classList.remove('active');
     }
 
-    // Buton metinlerini güncelle
     document.querySelector('[data-operation="clear"]').innerText = translations[lang].clear;
     document.querySelector('[data-operation="delete"]').innerText = translations[lang].delete;
     document.querySelector('[data-operation="%"]').innerText = translations[lang].percent;
@@ -349,17 +343,16 @@ function changeLanguage(lang) {
     document.querySelector('[data-number="."]').innerText = translations[lang].decimal;
     document.getElementById('clear-history').innerText = translations[lang].clearHistory;
 
-    // Tema butonlarının metinlerini güncelle
     const themeBtns = document.querySelectorAll('.theme-buttons button');
     themeBtns.forEach((btn, index) => {
         btn.innerText = translations[lang].themeButtons[index];
     });
 
-    // İşlem sembollerini güncelle (eğer gerekiyor ise)
+    
     updateDisplay();
 }
 
-// Dil seçici butonları için olay dinleyicileri
+
 langTrBtn.addEventListener('click', () => {
     changeLanguage('tr');
 });
@@ -368,10 +361,10 @@ langEnBtn.addEventListener('click', () => {
     changeLanguage('en');
 });
 
-// Sayfa yüklendiğinde
+
 document.addEventListener('DOMContentLoaded', () => {
     updateDisplay();
     renderHistory();
-    changeLanguage(currentLanguage); // Varsayılan dil Türkçe
+    changeLanguage(currentLanguage);
 });
 
