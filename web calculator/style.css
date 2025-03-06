@@ -1,4 +1,4 @@
-/* ===== Temel Ayarlar ===== */
+
 * {
     margin: 0;
     padding: 0;
@@ -30,7 +30,7 @@ button:focus {
     margin-top: 30px;
 }
 
-/* ===== Ekran ===== */
+
 #display {
     background-color: #34495e;
     color: #ecf0f1;
@@ -46,7 +46,6 @@ button:focus {
     transition: background-color 0.3s ease;
 }
 
-/* ===== Butonlar Bölümü ===== */
 .buttons {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -71,7 +70,7 @@ button:active {
     transform: scale(0.95);
 }
 
-/* ===== Özel Buton Stilleri ===== */
+
 .operator {
     background-color: #e67e22;
     color: #fff;
@@ -94,17 +93,17 @@ button:active {
     background-color: #229954;
 }
 
-/* Sıfır Butonu */
+
 button[data-number="0"] {
     grid-column: span 2;
 }
 
-/* Faktöriyel Butonu */
+
 button[data-operation="factorial"] {
     font-size: 20px;
 }
 
-/* ===== Bilimsel İşlem Butonları ===== */
+
 .scientific-buttons {
     display: flex;
     flex-wrap: wrap;
@@ -126,7 +125,7 @@ button[data-operation="factorial"] {
     background-color: #7f8c8d;
 }
 
-/* ===== Tema Değiştir Butonları ===== */
+
 .theme-buttons {
     display: flex;
     gap: 10px;
@@ -157,7 +156,7 @@ button[data-operation="factorial"] {
     color: #fff;
 }
 
-/* ===== Geçmiş (History) Bölümü ===== */
+
 #history {
     background-color: #ecf0f1;
     color: #2c3e50;
@@ -172,7 +171,7 @@ button[data-operation="factorial"] {
     box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
 }
 
-/* Geçmişi Temizle Butonu */
+
 #clear-history {
     background-color: #e74c3c;
     color: #fff;
@@ -189,9 +188,9 @@ button[data-operation="factorial"] {
     background-color: #c0392b;
 }
 
-/* ===== Temalar ===== */
 
-/* Aydınlık Tema */
+
+
 body.light-theme {
     background-color: #ecf0f1;
     color: #2c3e50;
@@ -303,7 +302,7 @@ body.colorful-theme #clear-history:hover {
     background-color: #c0392b;
 }
 
-/* ===== Mobil Uyumlu Tasarım ===== */
+
 @media (max-width: 768px) {
     #display {
         font-size: 32px;
@@ -337,9 +336,9 @@ body.colorful-theme #clear-history:hover {
         margin: 5px 0;
     }
 }
-/* ... Önceki stiller ... */
 
-/* Dil Seçici Stili */
+
+
 .language-selector {
     display: flex;
     gap: 10px;
